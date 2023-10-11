@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: rgba(45, 152, 218, 0.962);
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+      }
+      .SurveyInfo {
+        width: 500px;
+        margin: 70px auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      .SurveyInfo h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .FullName {
+        display: flex;
+        gap: 10px;
+      }
+      .FirstName {
+        color: black;
+        background-color: white;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 45px;
+        border-style: hidden;
+        outline: none;
+        padding: 10px;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        position: relative;
+        top: 20px;
+        left: -89px;
+      }
+      .LastName {
+        color: black;
+        background-color: white;
+        align-items: center;
+        justify-content: center;
+        width: 160px;
+        height: 45px;
+        border-style: hidden;
+        outline: none;
+        padding: 10px;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        position: relative;
+        top: 20px;
+        left: -89px;
+      }
+      .checkboxlabel {
+        display: inline-block;
+        margin-right: 10px;
+      }
+      .checkboxinput {
+        padding: 10px;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: -10px;
+      }
+      .profession {
+        width: 30em;
+      }
+      .emailaddress {
+        width: 30em;
+        display: flex;
+      }
+      .dob,
+      .country,
+      .profession,
+      .emailaddress,
+      .mobilenumber {
+        padding: 10px;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .submitbtn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      .resetbtn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popupcontent {
+        background-color: #fff;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 5px;
+
+        position: relative;
+        left: 550px;
+        top: 250px;
+      }
+
+      .closepopup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .popupheading {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      #popupresults {
+        font-size: 16px;
+        font-size: 16px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 768px) {
+        .SurveyInfo {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Survey Form</h1>
+      <div>
+        <form class="SurveyInfo">
+          <div class="FullName">
+            <label class="Firstname">Firstname</label>
+            <input
+              type="text"
+              placeholder="First Name"
+              class="FirstName"
+              required
+            />
+            <label class="Lastname">Lastname</label>
+            <input
+              type="text"
+              placeholder="Last Name"
+              class="LastName"
+              required
+            />
+          </div>
+          <div>
+            <label for="dob" class="DoB">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" class="dob" required />
+            <label for="country" class="Country">Country:</label>
+            <select id="country" name="country" class="country" required>
+              <option value="">Select Country</option>
+              <option value="">India</option>
+              <option value="">USA</option>
+              <option value="">UK</option>
+              <option value="">Canada</option>
+              <option value="">Swizerland</option>
+              <option value="">Austalia</option>
+              <option value="">Poland</option>
+              <option value="">Italy</option>
+            </select>
+          </div>
+          <div>
+            <label class="genders">Gender:</label>
+            <label for="male" class="checkboxlabel">Male</label>
+            <input
+              type="checkbox"
+              id="male"
+              name="gender"
+              class="checkboxinput"
+            />
+            <label for="female" class="checkboxlabel">Female</label>
+            <input
+              type="checkbox"
+              id="female"
+              name="gender"
+              class="checkboxinput"
+            />
+            <label for="other" class="checkboxlabel">Other</label>
+            <input
+              type="checkbox"
+              id="other"
+              name="gender"
+              class="checkboxinput"
+            />
+          </div>
+          <div>
+            <label for="profession" class="Profession">Profession:</label>
+            <input
+              type="text"
+              id="profession"
+              name="profession"
+              class="profession"
+              required
+            />
+          </div>
+          <div>
+            <label for="email" class="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="emailaddress"
+              required
+            />
+            <label for="mobile" class="mobile">Mobile Number:</label>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              class="mobilenumber"
+              required
+            />
+          </div>
+
+          <button type="submit" id="submitbutton" class="submitbtn">
+            Submit
+          </button>
+          <button type="button" id="resetbutton" class="resetbtn">Reset</button>
+        </form>
+      </div>
+      <div class="popup" id="popup">
+        <div class="popupcontent" id="popupcontents">
+          <span class="closebtn" id="closepopup">&times;</span>
+          <h3 class="popupheading">Survey Results</h3>
+          <div id="popupresults">
+            <!-- Selected values will be displayed here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const popupContent = document.querySelector(".popupcontent");
+
+        function displayPopup(surveyResults) {
+          document.getElementById("popupresults").textContent = surveyResults;
+          document.querySelector(".popup").style.display = "block";
+        }
+
+        function resetForm() {
+          document.querySelector(".SurveyInfo").reset();
+        }
+
+        document
+          .querySelector(".SurveyInfo")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const firstName = document.querySelector(".FirstName").value;
+            const lastName = document.querySelector(".LastName").value;
+            const dob = document.querySelector(".dob").value;
+            const country = document.querySelector(".country").value;
+            const genderInputs = document.querySelectorAll(".checkboxinput");
+            const selectedGender = Array.from(genderInputs).find(
+              (input) => input.checked
+            );
+            const profession = document.querySelector(".profession").value;
+            const email = document.querySelector(".emailaddress").value;
+            const mobile = document.querySelector(".mobilenumber").value;
+
+            if (!emailIsValid(email)) {
+              alert("Please enter a valid email address.");
+              return;
+            }
+
+            if (!mobileIsValid(mobile)) {
+              alert("Please enter a valid mobile number.");
+              return;
+            }
+
+            const surveyResults = `
+              First Name: ${firstName}
+              Last Name: ${lastName}
+              Date of Birth: ${dob}
+              Country: ${country}
+              Gender: ${selectedGender ? selectedGender.value : "Not specified"}
+              Profession: ${profession}
+              Email: ${email}
+              Mobile Number: ${mobile}
+            `;
+
+            displayPopup(surveyResults);
+          });
+
+        function emailIsValid(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function mobileIsValid(mobile) {
+          return /^\d{10}$/.test(mobile);
+        }
+
+        document
+          .querySelector(".closebtn")
+          .addEventListener("click", function () {
+            popup.style.display = "none";
+          });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            resetForm();
+          }
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            document.getElementById("submitbutton").click();
+          }
+        });
+
+        document
+          .getElementById("resetbutton")
+          .addEventListener("click", function () {
+            resetForm();
+          });
+      });
+    </script>
+  </body>
+</html>
