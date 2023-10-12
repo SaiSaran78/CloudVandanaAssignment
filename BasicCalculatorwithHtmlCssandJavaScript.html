@@ -131,7 +131,7 @@
           margin: 5px 0;
         }
       }
-      
+
       @media screen and (min-width: 1025px) and (max-width: 1440px) {
         #CalcContainer {
           width: 60%;
@@ -162,98 +162,43 @@
           />
         </div>
         <div class="gridbuttons">
-          <input
-            class="numbers"
-            type="button"
-            value="9"
-            onclick="appendToInput('9')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="8"
-            onclick="appendToInput('8')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="7"
-            onclick="appendToInput('7')"
-          />
+          <input class="numbers" type="button" value="9" onclick="Input('9')" />
+          <input class="numbers" type="button" value="8" onclick="Input('8')" />
+          <input class="numbers" type="button" value="7" onclick="Input('7')" />
           <input
             class="operations"
             type="button"
             value="+"
-            onclick="appendToInput('+')"
+            onclick="Input('+')"
             class="math"
           />
           <br />
 
-          <input
-            class="numbers"
-            type="button"
-            value="4"
-            onclick="appendToInput('4')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="5"
-            onclick="appendToInput('5')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="6"
-            onclick="appendToInput('6')"
-          />
+          <input class="numbers" type="button" value="4" onclick="Input('4')" />
+          <input class="numbers" type="button" value="5" onclick="Input('5')" />
+          <input class="numbers" type="button" value="6" onclick="Input('6')" />
           <input
             class="operations"
             type="button"
             value="−"
-            onclick="appendToInput('-')"
+            onclick="Input('-')"
             class="math"
           />
           <br />
 
-          <input
-            class="numbers"
-            type="button"
-            value="1"
-            onclick="appendToInput('1')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="2"
-            onclick="appendToInput('2')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="3"
-            onclick="appendToInput('3')"
-          />
+          <input class="numbers" type="button" value="1" onclick="Input('1')" />
+          <input class="numbers" type="button" value="2" onclick="Input('2')" />
+          <input class="numbers" type="button" value="3" onclick="Input('3')" />
           <input
             class="operations"
             type="button"
             value="÷"
-            onclick="appendToInput('/')"
+            onclick="Input('/')"
             class="math"
           />
           <br />
-          <input
-            class="numbers"
-            type="button"
-            value="."
-            onclick="appendToInput('.')"
-          />
-          <input
-            class="numbers"
-            type="button"
-            value="0"
-            onclick="appendToInput('0')"
-          />
+          <input class="numbers" type="button" value="." onclick="Input('.')" />
+          <input class="numbers" type="button" value="0" onclick="Input('0')" />
           <input
             class="numbers"
             type="button"
@@ -264,14 +209,14 @@
             class="operations"
             type="button"
             value="×"
-            onclick="appendToInput('*')"
+            onclick="Input('*')"
             class="math"
           />
         </div>
       </form>
     </div>
     <script>
-      const appendToInput = (value) => {
+      const Input = (value) => {
         document.calculator.answer.value += value;
       };
 
@@ -292,12 +237,13 @@
       document.addEventListener("keydown", (event) => {
         const key = event.key;
         if (/[0-9+\-*/.=]/.test(key)) {
-          appendToInput(key);
+          Input(key);
         } else if (key === "Enter") {
           calculateResult();
         } else if (key === "Backspace") {
           const currentValue = document.calculator.answer.value;
-          document.calculator.answer.value = currentValue.slice(0, -1);
+          // document.calculator.answer.value = currentValue.slice(0, -1);
+          document.calculator.answer.value = currentValue.slice(0);
         } else if (key === "Escape") {
           clearInput();
         }
