@@ -1,4 +1,4 @@
-import java.util.*;
+import java.lang.System;
 
 public class JavaQuestion2 {
     int value(char r) {
