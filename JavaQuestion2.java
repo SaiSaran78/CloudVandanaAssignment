@@ -1,54 +1,43 @@
-import java.lang.System;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Map;
 
 public class JavaQuestion2 {
-    int value(char r) {
-        if (r == 'I') {
-            return 1;
-        }
-        if (r == 'V') {
-            return 5;
-        }
-        if (r == 'X') {
-            return 10;
-        }
-        if (r == 'L') {
-            return 50;
-        }
-        if (r == 'C') {
-            return 100;
-        }
-        if (r == 'D') {
-            return 500;
-        }
-        if (r == 'M') {
-            return 1000;
-        }
-        return -1;
+    public static int romanToInt(String s) {
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
 
-    }
+        int result = 0;
+        int prevValue = 0;
 
-    int RomantoInt(String str) {
-        int res = 0;
-        for (int i = 0; i < str.length(); i++) {
-            int s1 = value(str.charAt(i));
-            if (i + 1 < str.length()) {
-                int s2 = value(str.charAt(i + 1));
-                if (s1 >= s2) {
-                    res = res + s1;
-                } else {
-                    res = res + s2 - s1;
-                    i++;
-                }
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currentValue = romanMap.get(s.charAt(i));
+
+            if (currentValue < prevValue) {
+                result -= currentValue;
             } else {
-                res = res + s1;
+                result += currentValue;
             }
+
+            prevValue = currentValue;
         }
 
-        return res;
+        return result;
     }
-    public static void main(String[] args){
-        JavaQuestion2  ob = new JavaQuestion2();
-        String str = "MCMIV";
-        System.out.println("Integer form of Roman Numeral is " + ob.RomantoInt(str));
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a Roman numeral: ");
+        String romanNumeral = scanner.nextLine().toUpperCase(); // Convert to uppercase for consistency
+
+        int integerEquivalent = romanToInt(romanNumeral);
+        System.out.println("Integer equivalent: " + integerEquivalent);
+        scanner.close();
     }
 }
